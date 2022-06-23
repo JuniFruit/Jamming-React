@@ -1,0 +1,92 @@
+.playlist-wrapper {
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+.PlaylistBox{
+  
+  width: 37%;
+  max-height: 980px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #222326bf;
+  box-shadow: 0 4px 2px 2px #000000;
+}
+
+.Playlist-container {
+  
+  position: relative;
+  
+  height: 0px;
+  top: -880px;
+  transform: translateX(-100%);
+  transition: all .3s ease;
+}
+
+.container {
+  
+  transform: translateX(0%);
+  height: 900px;
+  transition: all .3s ease;
+  
+}
+
+.container h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    
+    padding: .88rem;
+}
+
+.create-playlist {
+  display: flex;
+  justify-content: center;
+  
+  
+}
+
+.create-button {
+    cursor: pointer;
+    width: 10rem;
+    padding: .77rem 0;
+    border-radius: 54px;
+    border-width: 0px;
+    margin: .88rem;
+    background-color: #1db954;
+    text-align: center;
+    font-size: .83rem;
+    transition: background-color .25s;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  
+.create-button:hover {
+    background-color: #1db954a9;
+  }
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+
+@media only screen and (max-width: 1020px) {
+    .PlaylistBox {
+      width: 90%;
+      
+    }
+  
+  }
+
+@media  screen and (max-width: 500px) {
+  .PlaylistBox h2{
+    font-size: 1rem;
+  }
+  .create-playlist button {
+    font-size: .6rem;
+  }
+  
+}

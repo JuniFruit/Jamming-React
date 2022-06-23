@@ -1,0 +1,216 @@
+
+:root {
+    --button_width: 48px;
+    --sound_width: 48px;
+    --thumb_size: 14px;
+    --button_color: #1db954;
+    --timeline_main: #1db954;
+    --timeline_back: rgb(59, 57, 57);
+    --main_color: black;
+    --buttonOnHover: #1db954b5;
+}
+
+.heading {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    
+}
+.icon-container img {
+    border-radius: 50%;
+    max-width: 50%;
+    min-width: 2rem;
+    cursor: pointer;
+    
+}
+
+.Player {
+    
+    width: 50%;
+    height: fit-content;
+    background-color: #222326bf;
+    box-shadow: 0 4px 2px 2px #000000;
+}
+
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+
+
+.song-information h3 {
+    text-align: center;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #1db954, 0 0 30px #1db954, 0 0 40px #1db954, 0 0 45px #1db954;
+
+    
+}
+.song-information p {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(256, 256, 256, 0.8);
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #1db954, 0 0 30px #1db954, 0 0 40px;
+
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 50px;
+    border: 0px solid white;
+    border-radius: 2rem;
+    background-color: var(--main_color);
+}
+
+
+.controls-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0px;
+    background: transparent;
+    width: var(--button_width);
+    max-height: 74px;
+    color: var(--button_color);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.controls-button:hover {
+    color: var(--buttonOnHover)
+}
+
+.timeline {
+    -webkit-appearance: none;
+    background-color: var(--timeline_back);
+    outline: none;
+    appearance: none;
+    opacity: 0.7;
+    width: calc(100% - (var(--button_width) + var(--sound_width)));
+    max-height: 8px;
+    background-image: linear-gradient(var(--timeline_main), var(--timeline_main));
+    background-size: 0% 100%;
+    border-radius: 2rem;
+    background-repeat: no-repeat;
+}
+.timeline::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: var(--thumb_size);
+    height: var(--thumb_size);
+    border-radius: 50%;
+    opacity: 0;
+    background: var(--button_color); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    transition: opacity .3s ease;
+  }
+
+.timeline::-moz-range-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: var(--thumb_size);
+    height: var(--thumb_size);
+    border-radius: 50%;
+    opacity: 0;
+    background: var(--button_color); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    transition: opacity .3s ease;
+}
+.timeline::-ms-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: var(--thumb_size);
+    height: var(--thumb_size);
+    border-radius: 50%;
+   
+    opacity: 0;
+    background: var(--button_color); /* Green background */
+    cursor: pointer; /* Cursor on hover */
+    transition: opacity .3s ease;
+}
+
+.timeline::-webkit-slider-thumb:hover {
+    opacity: 1;
+}
+.timeline::-ms-thumb {
+    opacity: 1;
+}
+.timeline::-moz-range-thumb {
+    opacity: 1;
+}
+
+.timeline::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+}
+
+
+  
+
+
+
+@media only screen and (max-width: 780px) {
+    :root {
+        --button_width: 34px;
+        --sound_width: 34px;
+     }
+     
+     .controls {
+         height: 30px;
+         width: 85%;
+     }
+
+     .icon-container img {
+         max-width: 85%;
+     }
+     .heading h2 {
+         font-size: 14px;
+         width: 85%;
+     }
+     .Player {
+         width: 80%;
+     }
+
+     
+
+    
+   
+ 
+}
+
+
+@media only screen and (min-width: 2000px) {
+    
+    :root {
+        --button_width: 64px;
+        --sound_width: 64px;
+        --thumb_size: 20px;
+    }
+    .timeline {
+        min-height: 14px;
+    }
+    .controls {
+        min-height: 60px;
+    }
+
+    .icon-container img {
+        min-width: 50%;
+    }
+}

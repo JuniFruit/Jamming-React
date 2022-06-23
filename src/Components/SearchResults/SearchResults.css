@@ -1,0 +1,38 @@
+.SearchResults {
+    width: 50%;
+    height: 950px;
+    overflow-y: scroll;
+    padding: .88rem;
+    background-color: #222326bf;
+    box-shadow: 0 4px 2px 2px #000000;
+  }
+
+  .container-header {
+    display: flex;
+    
+    align-items: center;
+  }
+
+  .container-header p {
+    width: 100%;
+    text-align: right;
+    margin-left: .5rem;
+    transition: color .2s ease;
+    cursor: pointer;
+  }
+
+  .container-header p:hover {
+    color: rgba(255, 255, 255, 0.564)
+  }
+  
+  ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+  }
+  
+  @media only screen and (max-width: 1020px) {
+    .SearchResults {
+      width: 90%;
+      margin-bottom: 2rem;
+    }
+  }
