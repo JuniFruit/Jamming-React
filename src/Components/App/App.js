@@ -9,7 +9,7 @@ import { SearchResults } from '../SearchResults/SearchResults.js';
 import './App.css';
 
 const clientID = '5304115adf274669b2598da4bc472f38';
-const redirectURI = 'http://localhost:3000/';
+const redirectURI = 'https://junifruitjammingproject.surge.sh/';
 let accessToken = window.sessionStorage.getItem('accessToken');
 
 class App extends React.Component {

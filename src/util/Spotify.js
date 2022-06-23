@@ -4,7 +4,7 @@
 export const Spotify = {
     getAccessToken() {
 
-        const regExp = /(http:\/\/localhost:3000\/)#/;
+        const regExp = /(https:\/\/junifruitjammingproject.surge.sh\/)#/;
         const query = window.location.href.replace(regExp, ''); 
         const params = new URLSearchParams(query);
     
