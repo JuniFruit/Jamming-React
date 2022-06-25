@@ -21,7 +21,7 @@ export class Playlist extends React.Component {
         this.closePlaylist();
         setTimeout(() => {
             this.props.getUserPlaylists();
-        }, 500);
+        },500);
         
         window.sessionStorage.removeItem('prevPlaylistTracks'); 
     }

@@ -8,6 +8,12 @@ html {
   font-size: 18px;
 }
 
+button {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 
 h1 {
   padding: .77rem 0;
@@ -89,4 +95,10 @@ h2 {
     align-items: center;
     flex-direction: column;
   }
+}
+@media screen and (max-width: 500px) {
+  .App {
+    padding: 0 5% 10% 5%;
+  }
+  
 }

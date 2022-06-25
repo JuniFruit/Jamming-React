@@ -58,5 +58,8 @@
   .Playlist input {
     font-size: 1rem;
   }
+  .Playlist {
+    width: 90%;
+  }
   
 }

@@ -43,9 +43,9 @@ export class Track extends React.Component {
                 <div className="Track-img">
                     <img onClick={this.goToTrack} src={this.props.track.img} alt="album_img 64"/>
                 </div>
-                <div className="Track-information">
-                    <div className="Track-header">
-                        <h3 onClick={this.previewTrack}>{this.props.track.name}</h3>
+                <div  onClick={this.previewTrack} className="Track-information">
+                    <div  className="Track-header">
+                        <h3>{this.props.track.name}</h3>
                     </div>
                     
                     <p> {this.props.track.artist} | {this.props.track.album}</p>

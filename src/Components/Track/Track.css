@@ -13,6 +13,8 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+
   
 .Track-action {
     cursor: pointer;
@@ -36,16 +38,13 @@
     
     height: fit-content;
     
-}
-  
-.Track-header {
-    
     cursor: pointer;
    
     transition: color 0.2s ease;
-}
 
-.Track-header:hover {
+}
+  
+.Track-information:hover {
     color:rgba(172, 172, 172, 0.648);
 }
 

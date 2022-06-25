@@ -1,7 +1,6 @@
 
 :root {
-    --button_width: 48px;
-    --sound_width: 48px;
+    --button_size: 48px;
     --thumb_size: 14px;
     --button_color: #1db954;
     --timeline_main: #1db954;
@@ -81,14 +80,16 @@
 .controls-button {
     display: flex;
     align-items: center;
-    justify-content: center;
     border: 0px;
     background: transparent;
-    width: var(--button_width);
-    max-height: 74px;
+    width: var(--button_size);
     color: var(--button_color);
     cursor: pointer;
     transition: color 0.2s ease;
+}
+.controls-button svg {
+    width: 100%;
+
 }
 
 .controls-button:hover {
@@ -101,7 +102,7 @@
     outline: none;
     appearance: none;
     opacity: 0.7;
-    width: calc(100% - (var(--button_width) + var(--sound_width)));
+    width: calc(100% - (var(--button_size) + var(--button_size)));
     max-height: 8px;
     background-image: linear-gradient(var(--timeline_main), var(--timeline_main));
     background-size: 0% 100%;
@@ -168,9 +169,8 @@
 
 @media only screen and (max-width: 780px) {
     :root {
-        --button_width: 34px;
-        --sound_width: 34px;
-     }
+        --button_size: 40px;
+    }
      
      .controls {
          height: 30px;
@@ -180,12 +180,9 @@
      .icon-container img {
          max-width: 85%;
      }
-     .heading h2 {
-         font-size: 14px;
-         width: 85%;
-     }
+  
      .Player {
-         width: 80%;
+         width: 90%;
      }
 
      
@@ -199,9 +196,7 @@
 @media only screen and (min-width: 2000px) {
     
     :root {
-        --button_width: 64px;
-        --sound_width: 64px;
-        --thumb_size: 20px;
+       --button-size: 64
     }
     .timeline {
         min-height: 14px;

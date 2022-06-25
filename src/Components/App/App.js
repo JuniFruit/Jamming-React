@@ -8,9 +8,10 @@ import { SearchBar } from '../SearchBar/SearchBar.js';
 import { SearchResults } from '../SearchResults/SearchResults.js';
 import './App.css';
 
-const clientID = '5304115adf274669b2598da4bc472f38';
-const redirectURI = 'https://junifruitjammingproject.surge.sh/';
 let accessToken = window.sessionStorage.getItem('accessToken');
+
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +24,6 @@ class App extends React.Component {
       playlists: [],
       allowAddTracks: false,
       playlistId: null,
-      
       popupActive: false,
 
     }
@@ -42,7 +42,7 @@ class App extends React.Component {
     this.setPopupWindow = this.setPopupWindow.bind(this);
     this.handlePopup = this.handlePopup.bind(this);
     this.resetSearchResults = this.resetSearchResults.bind(this);
-    this.acquireAccess = this.acquireAccess.bind(this);
+   
   }
 
   // Sets the track info for preview player
@@ -64,33 +64,16 @@ class App extends React.Component {
     window.open(trackUrl, 'Spotify')
   }
 
-  // Gets Access token
 
-  acquireAccess() {
-    const scope = 'user-read-playback-state user-read-currently-playing user-modify-playback-state playlist-modify-public'
-    window.location = `https://accounts.spotify.com/authorize?client_id=${clientID}&response_type=token&scope=${scope}&redirect_uri=${redirectURI}`;
-    const response = Spotify.getAccessToken();
-    window.sessionStorage.setItem('accessToken', response[0]);
-
-    const expiresIn = response[1];
-    window.setTimeout(() => {
-        window.sessionStorage.removeItem('accessToken')
-    }, expiresIn * 1000);
-    window.history.pushState('Access Token', null, '/');
-    
-  }
 
   // Brings the results of search from Spotify
 
   search(value) {
-    if (!accessToken) {
-      this.acquireAccess();
-      return
-    }
+ 
+    
     this.setPopupWindow('Loading');
-    const currentResults = this.state.searchResults;
-
-    Spotify.search(value, accessToken)
+    
+    Spotify.search(value)
       .then(results => {
         this.setState({
           searchResults: results,
@@ -104,15 +87,12 @@ class App extends React.Component {
   // Saves the created playlist
 
   savePlaylist() {
-    if (!accessToken) {
-      this.acquireAccess();
-      return
-    }
+ 
     this.setPopupWindow('Loading');
     const trackURIs = this.state.playlistTracks.map(item => {
       return item.uri;
     });
-    Spotify.savePlaylist(this.state.playlistName, trackURIs, this.state.playlistId, accessToken)
+    Spotify.savePlaylist(this.state.playlistName, trackURIs, this.state.playlistId)
       .then(this.setState({
         playlistName: 'New Playlist',
         playlistTracks: [],
@@ -190,12 +170,9 @@ class App extends React.Component {
   // Shows current user's playlist once they logged in
 
   getUserPlaylists() {
-    if (!accessToken) {
-      this.acquireAccess();
-      return
-    }
+  
     this.setPopupWindow('Loading');
-    Spotify.getUserPlaylists(accessToken)
+    Spotify.getUserPlaylists()
       .then(response => {
         this.setState({
           playlists: response,
@@ -210,10 +187,7 @@ class App extends React.Component {
   // Gets the tracks for user's opened playlist
 
   getPlaylistTracks(playlistInfo) {
-    if (!accessToken) {
-      this.acquireAccess();
-      return
-    }
+  
 
     if (!playlistInfo.id) {
 
@@ -235,7 +209,7 @@ class App extends React.Component {
       return
     };
 
-    Spotify.getPlaylistTracks(playlistInfo.id, accessToken)
+    Spotify.getPlaylistTracks(playlistInfo.id)
       .then(response => {
         this.setState({
           playlistName: playlistInfo.name,
@@ -273,7 +247,7 @@ class App extends React.Component {
   }
 
   setPopupWindow(msgType, msgBody) {
-    //if (!msgType) return;
+    if (!msgType) return;
 
     this.setState({
       popupActive: true,
@@ -288,15 +262,21 @@ class App extends React.Component {
       searchResults: []
     })
   }
+ 
+
+  
 
 
   componentDidMount() {
     if (accessToken) {
       this.getUserPlaylists();
     }
-    
-
+    if (window.location.href.match(/access_token=([^&]*)/) !== null) {
+      Spotify.getAccessToken();
+    }
   }
+
+
 
 
   render() {
@@ -325,6 +305,7 @@ class App extends React.Component {
             {this.state.popupActive && <PopUpWindow msgType={this.state.msgType} msgBody={this.state.msgBody} handlePopup={this.handlePopup} />}
           </div>
           
+
         </div>
       </div>
 
