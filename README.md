@@ -8,3 +8,4 @@
 
 ## Note!
 <i> This project is currently deployed on Surge. To check the final product, go <a href="http://JuniFruitJammingProject.surge.sh">here</a></i>
+<i> To access all the features you'll need Spotify account </i>
